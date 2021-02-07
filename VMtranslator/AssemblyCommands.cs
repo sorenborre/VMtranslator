@@ -193,15 +193,16 @@ namespace VMtranslator
 
         public string Pop(string number)
         {
+
+
             return
-                "//pop\n" +
+                "@SP\n" +
+                "AM = M - 1\n" +
+                "D=M\n" +
                 $"@{number}\n" +
-                "D = A\n" +
-                "@SP\n" +
-                "A = M\n" +
-                "M = D\n" +
-                "@SP\n" +
-                "M = M + 1\n";
+                "M=D\n";
         }
+
+
     }
 }

@@ -15,23 +15,28 @@ namespace VMtranslator
         public List<string> Run(List<string> commands)
         {
             List<string> results = new List<string>();
-            foreach (var item in commands)
+            foreach (var line in commands)
             {
-                string[] commandLine = item.Split(' ');
+                string result;
+                string[] splittedLine = line.Split(' ');
+                string vmOperation = splittedLine[0];
+                string segment = splittedLine.Length > 1 ? splittedLine[1] : "";
+                string value = SetValue(splittedLine);
 
-                string vmCommand = commandLine[0];
-                string value = commandLine.Length > 1 ? commandLine[2] : "0";
 
-                if (commandLine[0] =="push")
-                {
 
-                }
-                else if (commandLine[0] == "pop")
-                {
 
-                }
 
-                string result = GetVmCommandAsAssemblyCommands(vmCommand, value);
+
+
+                if (splittedLine.Length > 0 && splittedLine[1] == "constant")
+                    result = AssemblyCommands.Push(value);
+                else
+                    result = AssemblyCommands.Pop(value);
+
+                if (splittedLine.Length == 1)
+                    result = GetVmOperationAsAssemblyCommands(vmOperation, value);
+
                 results.Add(result);
 
                 Console.WriteLine(result);
@@ -39,7 +44,10 @@ namespace VMtranslator
             return results;
         }
 
-        public string GetVmCommandAsAssemblyCommands(string method, string value)
+        private static string SetValue(string[] commandLine) =>
+            commandLine.Length > 1 ? commandLine[2] : "";
+
+        public string GetVmOperationAsAssemblyCommands(string method, string value)
         {
             return method switch
             {
@@ -56,6 +64,39 @@ namespace VMtranslator
                 "and" => AssemblyCommands.And(),
                 _ => "",
             };
+        }
+
+        public string SelectSegment() { 
+        
+        
+        
+        }
+
+
+        public void This(string action) {
+
+            if (action == "pointer")
+            {
+//            @SP
+//            AM = M - 1
+//            D = M
+//            @THIS
+//            M = D
+
+            }
+            else
+            {
+
+            }
+
+
+
+        }
+        public void That()
+        {
+
+
+
         }
 
         List<string> stringlist = new List<string>() {

@@ -1,0 +1,463 @@
+//push
+@17
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@17
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//equals
+@SP
+A=M-1
+D=M
+A=A-1
+D=D-M
+@generatedAssembly.0
+D;JEQ
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.1
+0;JMP
+(generatedAssembly.0)
+@SP
+AM=M-1
+A=A-1
+M=D-1
+(generatedAssembly.1)
+
+//push
+@17
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@16
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//equals
+@SP
+A=M-1
+D=M
+A=A-1
+D=D-M
+@generatedAssembly.2
+D;JEQ
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.3
+0;JMP
+(generatedAssembly.2)
+@SP
+AM=M-1
+A=A-1
+M=D-1
+(generatedAssembly.3)
+
+//push
+@16
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@17
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//equals
+@SP
+A=M-1
+D=M
+A=A-1
+D=D-M
+@generatedAssembly.4
+D;JEQ
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.5
+0;JMP
+(generatedAssembly.4)
+@SP
+AM=M-1
+A=A-1
+M=D-1
+(generatedAssembly.5)
+
+//push
+@892
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@891
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//LT
+@SP
+A=M-1
+D=M
+A=A-1
+D=M-D
+@generatedAssembly.6
+D;JLT
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.7
+0;JMP
+(generatedAssembly.6)
+@SP
+AM=M-1
+A=A-1
+M=0
+M=-1
+(generatedAssembly.7)
+
+//push
+@891
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@892
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//LT
+@SP
+A=M-1
+D=M
+A=A-1
+D=M-D
+@generatedAssembly.8
+D;JLT
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.9
+0;JMP
+(generatedAssembly.8)
+@SP
+AM=M-1
+A=A-1
+M=0
+M=-1
+(generatedAssembly.9)
+
+//push
+@891
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@891
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//LT
+@SP
+A=M-1
+D=M
+A=A-1
+D=M-D
+@generatedAssembly.10
+D;JLT
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.11
+0;JMP
+(generatedAssembly.10)
+@SP
+AM=M-1
+A=A-1
+M=0
+M=-1
+(generatedAssembly.11)
+
+//push
+@32767
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@32766
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//GT
+@SP
+A=M-1
+D=M
+A=A-1
+D=M-D
+@generatedAssembly.12
+D;JGT
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.13
+0;JMP
+(generatedAssembly.12)
+@SP
+AM=M-1
+A=A-1
+M=0
+M=-1
+(generatedAssembly.13)
+
+//push
+@32766
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@32767
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//GT
+@SP
+A=M-1
+D=M
+A=A-1
+D=M-D
+@generatedAssembly.14
+D;JGT
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.15
+0;JMP
+(generatedAssembly.14)
+@SP
+AM=M-1
+A=A-1
+M=0
+M=-1
+(generatedAssembly.15)
+
+//push
+@32766
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@32766
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//GT
+@SP
+A=M-1
+D=M
+A=A-1
+D=M-D
+@generatedAssembly.16
+D;JGT
+@SP
+AM=M-1
+A=A-1
+M=0
+@generatedAssembly.17
+0;JMP
+(generatedAssembly.16)
+@SP
+AM=M-1
+A=A-1
+M=0
+M=-1
+(generatedAssembly.17)
+
+//push
+@57
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@31
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//push
+@53
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//add
+@SP
+A=M-1
+D=M
+A=A-1
+M=M+D
+@SP
+AM=M-1
+
+//push
+@112
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//sub
+@SP
+A=M-1
+D=M
+A=A-1
+M=M-D
+@SP
+AM=M-1
+
+//neg
+@SP
+M=M-1
+A=M
+M=-M
+@SP
+AM=M+1
+
+//and
+@SP
+M=M-1
+A=M
+D=M
+@SP
+M=M-1
+A=M
+M=D&M
+D=M
+@SP
+M=M+1
+
+//push
+@82
+D = A
+@SP
+A = M
+M = D
+@SP
+M = M + 1
+
+//or
+@SP
+M=M-1
+A=M
+D=M
+@SP
+M=M-1
+A=M
+M=D|M
+D=M
+@SP
+M=M+1
+
+//not
+@SP
+M=M-1
+A=M
+D=M
+M=!D
+@SP
+M=M+1
+

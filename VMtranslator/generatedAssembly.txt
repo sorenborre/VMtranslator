@@ -1,5 +1,5 @@
-//push
-@17
+//push constant
+@3030
 D = A
 @SP
 A = M
@@ -7,38 +7,22 @@ M = D
 @SP
 M = M + 1
 
-//push
-@17
-D = A
+//pop
+@3
+D=A
+@THIS
+D=M+D
+@R13
+M=D
 @SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//equals
-@SP
-A=M-1
+AM=M-1
 D=M
-A=A-1
-D=D-M
-@generatedAssembly.0
-D;JEQ
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.1
-0;JMP
-(generatedAssembly.0)
-@SP
-AM=M-1
-A=A-1
-M=D-1
-(generatedAssembly.1)
+@R13
+A=M
+M=D
 
-//push
-@17
+//push constant
+@3040
 D = A
 @SP
 A = M
@@ -46,38 +30,22 @@ M = D
 @SP
 M = M + 1
 
-//push
-@16
-D = A
+//pop
+@4
+D=A
+@THAT
+D=M+D
+@R13
+M=D
 @SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//equals
-@SP
-A=M-1
+AM=M-1
 D=M
-A=A-1
-D=D-M
-@generatedAssembly.2
-D;JEQ
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.3
-0;JMP
-(generatedAssembly.2)
-@SP
-AM=M-1
-A=A-1
-M=D-1
-(generatedAssembly.3)
+@R13
+A=M
+M=D
 
-//push
-@16
+//push constant
+@32
 D = A
 @SP
 A = M
@@ -85,38 +53,22 @@ M = D
 @SP
 M = M + 1
 
-//push
-@17
-D = A
+//pop
+@2
+D=A
+@THIS
+D=M+D
+@R13
+M=D
 @SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//equals
-@SP
-A=M-1
+AM=M-1
 D=M
-A=A-1
-D=D-M
-@generatedAssembly.4
-D;JEQ
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.5
-0;JMP
-(generatedAssembly.4)
-@SP
-AM=M-1
-A=A-1
-M=D-1
-(generatedAssembly.5)
+@R13
+A=M
+M=D
 
-//push
-@892
+//push constant
+@46
 D = A
 @SP
 A = M
@@ -124,259 +76,32 @@ M = D
 @SP
 M = M + 1
 
-//push
-@891
-D = A
+//pop
+@6
+D=A
+@THAT
+D=M+D
+@R13
+M=D
 @SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//LT
-@SP
-A=M-1
+AM=M-1
 D=M
-A=A-1
-D=M-D
-@generatedAssembly.6
-D;JLT
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.7
-0;JMP
-(generatedAssembly.6)
-@SP
-AM=M-1
-A=A-1
-M=0
-M=-1
-(generatedAssembly.7)
+@R13
+A=M
+M=D
 
-//push
-@891
-D = A
+//push constant
+@THIS
+D = M
 @SP
 A = M
 M = D
 @SP
 M = M + 1
 
-//push
-@892
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//LT
-@SP
-A=M-1
-D=M
-A=A-1
-D=M-D
-@generatedAssembly.8
-D;JLT
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.9
-0;JMP
-(generatedAssembly.8)
-@SP
-AM=M-1
-A=A-1
-M=0
-M=-1
-(generatedAssembly.9)
-
-//push
-@891
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push
-@891
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//LT
-@SP
-A=M-1
-D=M
-A=A-1
-D=M-D
-@generatedAssembly.10
-D;JLT
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.11
-0;JMP
-(generatedAssembly.10)
-@SP
-AM=M-1
-A=A-1
-M=0
-M=-1
-(generatedAssembly.11)
-
-//push
-@32767
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push
-@32766
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//GT
-@SP
-A=M-1
-D=M
-A=A-1
-D=M-D
-@generatedAssembly.12
-D;JGT
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.13
-0;JMP
-(generatedAssembly.12)
-@SP
-AM=M-1
-A=A-1
-M=0
-M=-1
-(generatedAssembly.13)
-
-//push
-@32766
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push
-@32767
-D = A
-@LCL
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//GT
-@SP
-A=M-1
-D=M
-A=A-1
-D=M-D
-@generatedAssembly.14
-D;JGT
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.15
-0;JMP
-(generatedAssembly.14)
-@SP
-AM=M-1
-A=A-1
-M=0
-M=-1
-(generatedAssembly.15)
-
-//push
-@32766
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push
-@32766
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//GT
-@SP
-A=M-1
-D=M
-A=A-1
-D=M-D
-@generatedAssembly.16
-D;JGT
-@SP
-AM=M-1
-A=A-1
-M=0
-@generatedAssembly.17
-0;JMP
-(generatedAssembly.16)
-@SP
-AM=M-1
-A=A-1
-M=0
-M=-1
-(generatedAssembly.17)
-
-//push
-@57
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push
-@31
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//push
-@53
-D = A
+//push constant
+@THAT
+D = M
 @SP
 A = M
 M = D
@@ -393,13 +118,16 @@ M=M+D
 AM=M-1
 
 //push
-@112
-D = A
+@2
+D=A
+@THIS
+A=M+D
+D=M
 @SP
-A = M
-M = D
+A=M
+M=D
 @SP
-M = M + 1
+AM=M+1
 
 //sub
 @SP
@@ -410,55 +138,24 @@ M=M-D
 @SP
 AM=M-1
 
-//neg
+//push
+@6
+D=A
+@THAT
+A=M+D
+D=M
 @SP
-M=M-1
 A=M
-M=-M
+M=D
 @SP
 AM=M+1
 
-//and
+//add
 @SP
-M=M-1
-A=M
+A=M-1
 D=M
+A=A-1
+M=M+D
 @SP
-M=M-1
-A=M
-M=D&M
-D=M
-@SP
-M=M+1
-
-//push
-@82
-D = A
-@SP
-A = M
-M = D
-@SP
-M = M + 1
-
-//or
-@SP
-M=M-1
-A=M
-D=M
-@SP
-M=M-1
-A=M
-M=D|M
-D=M
-@SP
-M=M+1
-
-//not
-@SP
-M=M-1
-A=M
-D=M
-M=!D
-@SP
-M=M+1
+AM=M-1
 

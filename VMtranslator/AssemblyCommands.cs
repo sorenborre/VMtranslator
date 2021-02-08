@@ -176,13 +176,15 @@ namespace VMtranslator
                 "M=M+1\n";
         }
         public string GenerateLabel() =>
-           "generatedAssembly." + labelCounter++;
+           "label." + labelCounter++;
+        public string GenerateVariable() =>
+           "var." + labelCounter++;
 
-        public string Push(string number)
+        public string PushConstant(string value)
         {
             return
-                "//push\n" +
-                $"@{number}\n" +
+                "//push constant\n" +
+                $"@{value}\n" +
                 "D = A\n" +
                 "@SP\n" +
                 "A = M\n" +
@@ -191,18 +193,83 @@ namespace VMtranslator
                 "M = M + 1\n";
         }
 
-        public string Pop(string number)
+        public string PushPointer(string segment)
         {
-
-
             return
+                "//push constant\n" +
+                $"@{segment}\n" +
+                "D = M\n" +
                 "@SP\n" +
-                "AM = M - 1\n" +
-                "D=M\n" +
-                $"@{number}\n" +
-                "M=D\n";
+                "A = M\n" +
+                "M = D\n" +
+                "@SP\n" +
+                "M = M + 1\n";
         }
 
+        public string Push(string segment, string value)
+        {
+            string commands = 
+                "//push\n" +
+                $"@{value}\n" +
+                "D=A\n" +
+                $"@{segment}\n" +
+                "A=M+D\n" +
+                "D=M\n" +
+                "@SP\n" +
+                "A=M\n" +
+                "M=D\n" +
+                "@SP\n" +
+                "AM=M+1\n";
+
+            return segment == "static" ? PushStatic(value) : commands;
+        }
+
+        public string PushStatic(string value)
+        {
+            return
+                "//push static\n" +
+                $"@var.{value}\n" +
+                "D=M\n" +
+                "@SP\n" +
+                "A=M\n" +
+                "M=D\n" +
+                "@SP\n" +
+                "AM=M+1\n";
+        }
+
+
+        public string Pop(string segment, string value) {
+
+            string commands = 
+               "//pop\n" +
+               $"@{value}\n" +
+               "D=A\n" +
+               $"@{segment}\n" +
+               "D=M+D\n" +
+               "@R13\n" +
+               "M=D\n" +
+               "@SP\n" +
+               "AM=M-1\n" +
+               "D=M\n" +
+               "@R13\n" +
+               "A=M\n" +
+               "M=D\n";
+
+            return segment == "static" ? PopStatic(value) : commands;
+        }
+
+        public string PopStatic(string value)
+        {
+
+            return
+                "//Pop static\n"+
+                   "@SP\n" +
+                   "AM= M-1\n" +
+                   "D=M\n" +
+                   $"@var.{value}\n" +
+                   "M=D\n" +
+                   "@SP\n";
+        }
 
     }
 }

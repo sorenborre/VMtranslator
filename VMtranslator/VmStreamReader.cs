@@ -6,7 +6,6 @@ namespace VMtranslator
 {
     public class VmStreamReader
     {
-
         static public List<string> ReadStream()
         {
             List<string> result = new List<string>();

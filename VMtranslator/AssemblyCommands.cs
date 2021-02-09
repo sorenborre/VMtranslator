@@ -9,7 +9,77 @@ namespace VMtranslator
     {
         private int labelCounter = 0;
 
-        public string Add()
+        public string Push(string segment, string value)
+        {
+            if (segment == "temp")
+                return PushTemp(value);
+
+            else if (segment == "static")
+                return PushStatic(value);
+
+            else if (segment.Contains("pointer"))
+                return PushPointer(segment);
+
+            else if (segment == "constant")
+                return PushConstant(value);
+
+            else
+                return
+                    "//push\n" +
+                    $"@{value}\n" +
+                    "D=A\n" +
+                    $"@{segment}\n" +
+                    "A=M+D\n" +
+                    "D=M\n" +
+                    "@SP\n" +
+                    "A=M\n" +
+                    "M=D\n" +
+                    "@SP\n" +
+                    "AM=M+1\n";
+        }
+        public string Pop(string segment, string value)
+        {
+
+            if (segment == "temp")
+                return PopTemp(value);
+
+            else if (segment == "static")
+                return PopStatic(value);
+
+            else return
+               "//pop\n" +
+               $"@{value}\n" +
+               "D=A\n" +
+               $"@{segment}\n" +
+               "D=M+D\n" +
+               "@R13\n" +
+               "M=D\n" +
+               "@SP\n" +
+               "AM=M-1\n" +
+               "D=M\n" +
+               "@R13\n" +
+               "A=M\n" +
+               "M=D\n";
+        }
+
+        public string GetLogicOrArithmeticCommand(string command)
+        {
+            return command switch
+            {
+                "add" => Add(),
+                "sub" => Sub(),
+                "neg" => Neg(),
+                "eq" => Equals(),
+                "gt" => GreaterThan(),
+                "lt" => LesserThan(),
+                "not" => Not(),
+                "or" => Or(),
+                "and" => And(),
+                _ => "",
+            };
+        }
+
+        private string Add()
         {
             return
                 "//add\n" +
@@ -21,7 +91,7 @@ namespace VMtranslator
                 "@SP\n" +
                 "AM=M-1\n";
         }
-        public string Sub()
+        private string Sub()
         {
             return
                 "//sub\n" +
@@ -34,7 +104,7 @@ namespace VMtranslator
                 "AM=M-1\n";
         }
 
-        public string Neg()
+        private string Neg()
         {
             return
                 "//neg\n" +
@@ -45,7 +115,7 @@ namespace VMtranslator
                 "@SP\n" +
                 "AM=M+1\n";
         }
-        public string Equals()
+        private string Equals()
         {
             string ifTrue = GenerateLabel();
             string end = GenerateLabel();
@@ -74,7 +144,7 @@ namespace VMtranslator
                 "M=D-1\n" +
                 $"({end})\n";
         }
-        public string GreaterThan()
+        private string GreaterThan()
         {
             string ifTrue = GenerateLabel();
             string end = GenerateLabel();
@@ -101,7 +171,7 @@ namespace VMtranslator
                 "M=-1\n" +
                 $"({end})\n";
         }
-        public string LesserThan()
+        private string LesserThan()
         {
             string ifTrue = GenerateLabel();
             string end = GenerateLabel();
@@ -128,7 +198,7 @@ namespace VMtranslator
                 "M=-1\n" +
                 $"({end})\n";
         }
-        public string And()
+        private string And()
         {
             return
                 "//and\n" +
@@ -146,7 +216,7 @@ namespace VMtranslator
 
         }
 
-        public string Or()
+        private string Or()
         {
             return
                 "//or\n" +
@@ -163,7 +233,7 @@ namespace VMtranslator
                 "M=M+1\n";
         }
 
-        public string Not()
+        private string Not()
         {
             return
                 "//not\n" +
@@ -175,12 +245,12 @@ namespace VMtranslator
                 "@SP\n" +
                 "M=M+1\n";
         }
-        public string GenerateLabel() =>
+        private string GenerateLabel() =>
            "label." + labelCounter++;
-        public string GenerateVariable() =>
+        private string GenerateVariable() =>
            "var." + labelCounter++;
 
-        public string PushConstant(string value)
+        private string PushConstant(string value)
         {
             return
                 "//push constant\n" +
@@ -193,7 +263,7 @@ namespace VMtranslator
                 "M = M + 1\n";
         }
 
-        public string PushPointer(string segment)
+        private string PushPointer(string segment)
         {
             return
                 "//push constant\n" +
@@ -206,25 +276,22 @@ namespace VMtranslator
                 "M = M + 1\n";
         }
 
-        public string Push(string segment, string value)
+       
+
+        private string PushTemp(string value)
         {
-            string commands = 
-                "//push\n" +
-                $"@{value}\n" +
-                "D=A\n" +
-                $"@{segment}\n" +
-                "A=M+D\n" +
+            string temp = (int.Parse(value) + 5).ToString();
+            return 
+                $"@{temp}\n" +
                 "D=M\n" +
                 "@SP\n" +
                 "A=M\n" +
                 "M=D\n" +
                 "@SP\n" +
                 "AM=M+1\n";
-
-            return segment == "static" ? PushStatic(value) : commands;
         }
 
-        public string PushStatic(string value)
+        private string PushStatic(string value)
         {
             return
                 "//push static\n" +
@@ -237,28 +304,20 @@ namespace VMtranslator
                 "AM=M+1\n";
         }
 
+        private string PopTemp(string value)
+        {
 
-        public string Pop(string segment, string value) {
-
-            string commands = 
-               "//pop\n" +
-               $"@{value}\n" +
-               "D=A\n" +
-               $"@{segment}\n" +
-               "D=M+D\n" +
-               "@R13\n" +
-               "M=D\n" +
-               "@SP\n" +
-               "AM=M-1\n" +
-               "D=M\n" +
-               "@R13\n" +
-               "A=M\n" +
-               "M=D\n";
-
-            return segment == "static" ? PopStatic(value) : commands;
+            string temp = (int.Parse(value) + 5).ToString();
+            return
+                "//pop temp\n" +
+                "@SP\n" +
+                "AM=M-1\n" +
+                "D=M\n" +
+                $"@{temp}\n" +
+                "M=D\n";
         }
 
-        public string PopStatic(string value)
+        private string PopStatic(string value)
         {
 
             return
@@ -270,6 +329,8 @@ namespace VMtranslator
                    "M=D\n" +
                    "@SP\n";
         }
+
+
 
     }
 }
